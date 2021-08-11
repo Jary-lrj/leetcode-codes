@@ -5,14 +5,16 @@ class Solution
 public:
     string convertToTitle(int columnNumber)
     {
-        string ans;
-        while (columnNumber)
+        string dict = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        string ans = string();
+        int index = 1;
+        while (columnNumber > 26)
         {
-            --columnNumber;
-            ans.push_back(columnNumber % 26 + 'A');
+            columnNumber--;
+            ans.insert(0, 1, dict[columnNumber % 26]);
             columnNumber /= 26;
         }
-        reverse(ans.begin(), ans.end());
+        ans.insert(0, 1, dict[--columnNumber]);
         return ans;
     }
 };
